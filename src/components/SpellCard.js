@@ -9,7 +9,7 @@ import Subsection from './subsections/Subsection';
 const rarities = ['common', 'uncommon', 'rare', 'unique'];
 const rarity_class = ['secondary', 'warning', 'danger', 'primary'];
 const spellProperties = [
-  'area', 'duration', 'target', 'range', 'trigger', 'requirements',
+  'area', 'duration', 'target', 'range', 'saving throw', 'trigger', 'requirements',
   'cost', 'casting-time'
 ];
 
@@ -66,6 +66,7 @@ class SpellCard extends React.Component {
       <div className="spell-detail">
         <ul className="list-inline">
           {this.renderTraits(spell_data.traits)}
+          {this.renderTraditions(spell_data.traditions)}
           {this.renderPropertyTags(spell_data)}
         </ul>
         <hr></hr>
@@ -78,6 +79,12 @@ class SpellCard extends React.Component {
   renderTraits(traits) {
     return traits.map(trait => {
       return <Badge as="li" variant="info" className="trait-badge mr-1">{trait}</Badge>
+    })
+  }
+
+  renderTraditions(traditions) {
+    return traditions.map(tradition => {
+      return <Badge as="li" variant="primary" className="tradition-badge mr-1">{tradition}</Badge>
     })
   }
 
